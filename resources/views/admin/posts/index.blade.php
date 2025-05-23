@@ -25,28 +25,28 @@
                                             <th>Title</th>
                                             <th>Comments</th>
                                             <th>Created date</th>
-                                            <th>Salary</th>
+                                            <th>Updated At</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
+                                            <th>Id</th>
+                                            <th>User Name</th>
+                                            <th>Title</th>
+                                            <th>Comments</th>
+                                            <th>Created date</th>
+                                            <th>Updated At</th>
                                         </tr>
                                     </tfoot>
                                   <tbody>
                                     @foreach($posts as $post)  
                                     <tr>
                                         <td>{{ $post->id }}</td>
+                                        <td>{{ $post->user->name }}</td>
                                         <td>{{ $post->title }}</td>
-                                        <td>{{ $post->title }}</td>
-                                        <td>{{ $post->title }}</td>
-                                        <td>{{ $post->title }}</td>
-                                        <td>{{ $post->title }}</td>
+                                        <td>{{ $post->comments[0]->id }}</td>
+                                        <td>{{ $post->created_at->diffForHumans() }}</td>
+                                        <td>{{ $post->created_at->diffForHumans() }}</td>
                                     </tr>
                                     
                                     @endforeach
