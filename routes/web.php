@@ -25,10 +25,12 @@ Route::middleware(['auth'])->prefix('admin')->group(function(){
     // })->name('admin.posts.index');
 
     Route::get('/admin/posts', [PostController::class, 'index'])->name('admin.posts.index');
-
+    //  Route::resources([
+    //     'posts' => PostController::class,
+    // ]);
     
 });
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
