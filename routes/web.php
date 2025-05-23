@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,9 +20,11 @@ Route::middleware(['auth'])->prefix('admin')->group(function(){
         return view('admin.index');
     })->name('admin.index');
 
-    Route::get('/posts', function () {
-        return view('admin.posts.index');
-    })->name('admin.posts.index');
+    // Route::get('/posts', function () {
+    //     return view('admin.posts.index');
+    // })->name('admin.posts.index');
+
+    Route::get('/admin/posts', [PostController::class, 'index'])->name('admin.posts.index');
 
     
 });
