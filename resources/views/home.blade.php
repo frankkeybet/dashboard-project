@@ -1,23 +1,31 @@
-@extends('layouts.app')
+@extends('layouts.front')
+
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+ @if($posts->count())
 
-                    {{ __('You are logged in!') }}
-                </div>
-            </div>
+@foreach($posts as $post) 
+
+<div class="post-preview">
+          <a href="post.html">
+            <h2 class="post-title">
+              {{ $post->title }}
+            </h2>
+            <h3 class="post-subtitle">
+              {{\Illuminate\Support\Str::words($post->title, 2, '...')}}
+            </h3>
+          </a>
+          <p class="post-meta">Posted by
+            <a href="#">{{$post->user->name}}</a>
+            {{$post->created_at->format('m-y')}}</p>
         </div>
-    </div>
-</div>
-@endsection
+        <hr>
+        @endforeach
+        @endif
+        <!-- Pager -->
+        <div class="clearfix">
+          <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+        </div>
+
+        @endsection
