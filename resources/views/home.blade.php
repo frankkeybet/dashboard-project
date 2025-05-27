@@ -8,7 +8,7 @@
 @foreach($posts as $post) 
 
 <div class="post-preview">
-          <a href="post.html">
+          <a href="{{route('home.post', $post->id)}}">
             <h2 class="post-title">
               {{ $post->title }}
             </h2>
@@ -24,8 +24,20 @@
         @endforeach
         @endif
         <!-- Pager -->
+        
         <div class="clearfix">
-          <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
-        </div>
+         @if($posts->currentPage() === 1)
+          <a class="btn btn-primary float-right" href="{{$posts->nextPageUrl()}}">Newer Posts &rarr;</a>
 
+          @elseif(!$posts->hasMorePages())
+
+          <a class="btn btn-primary float-left" href="{{$posts->previousPageUrl()}}">&larr; Older Posts</a>
+  
+          @else
+          <a class="btn btn-primary float-left" href="{{$posts->previousPageUrl()}}">&larr; Older Posts</a>
+           <a class="btn btn-primary float-right" href="{{$posts->nextPageUrl()}}">Newer Posts &rarr;</a>
+          @endif
+
+         </div>
+       <!-- <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a> -->
         @endsection

@@ -26,8 +26,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $posts = Post::with('comments','user')->get();
+        $posts = Post::with('comments','user')->paginate(25);
 
         return view('home', compact('posts'));
+    }
+
+     public function post(Request $request, $post_id)
+    {
+        $post = Post::find($post_id);
+
+        return view('post', compact('post'));
     }
 }

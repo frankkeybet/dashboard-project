@@ -34,3 +34,4 @@ Route::middleware(['auth'])->prefix('admin')->group(function(){
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/post/{post}', [App\Http\Controllers\HomeController::class, 'post'])->name('home.post');
