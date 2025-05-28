@@ -31,10 +31,21 @@ class HomeController extends Controller
         return view('home', compact('posts'));
     }
 
-     public function post(Request $request, $post_id)
+     public function post(Request $request, Post $post)
     {
-        $post = Post::find($post_id);
 
         return view('post', compact('post'));
+    }
+
+      public function about(Request $request)
+    {
+
+        return view('about');
+    }
+
+      public function contact(Request $request)
+    {
+
+        return view('contact');
     }
 }
