@@ -51,8 +51,7 @@
           </li>
 
         <li class="nav-item">
-            <a 
-             onclick="event.preventDefault(); document.getElementById('form-logout').submit()"
+            <a  onclick="event.preventDefault(); document.getElementById('form-logout').submit()"
             class="nav-link" href="{{route('logout')}}">Logout</a>
           </li>
   
@@ -85,14 +84,15 @@
   </nav>
 
   <!-- Page Header -->
-  <header class="masthead" style="background-image: url('img/home-bg.jpg')">
+  <header class="masthead" style="background-image: url({{$mastHeadPhoto}})">
     <div class="overlay"></div>
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="site-heading">
             <h1>Clean Blog</h1>
-            <span class="subheading">A Blog Theme by Start Bootstrap</span>
+
+            <span class="subheading">A Blog Theme by Click click Bang</span>
           </div>
         </div>
       </div>
