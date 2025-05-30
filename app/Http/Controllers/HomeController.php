@@ -30,10 +30,12 @@ class HomeController extends Controller
 
         return view('home', compact('posts'));
     }
-
-     public function post(Request $request, Post $post)
+   
+    //  public function post(Request $request, $slug)
+    public function post(Request $request, Post $post) // Method 2
     {
 
+    //    $post = Post::with('comments', 'user')->where('slug', $slug)->firstOrFail();
         return view('post', compact('post'));
     }
 
