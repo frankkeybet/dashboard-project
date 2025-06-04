@@ -23,7 +23,8 @@
                         <a  onclick="event.preventDefault(); document.getElementById('form-logout-dashboard').submit()"
                           class="dropdown-item" href="{{route('logout')}}">Logout</a>
                          </li>
-                        <form id="form-logout-dashboard" action="{{route('logout')}}" method="post">
+
+                         <form id="form-logout-dashboard" action="{{route('custom.logout')}}" method="post">
                             @csrf
                           </form>
 

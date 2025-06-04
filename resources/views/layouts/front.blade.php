@@ -55,7 +55,7 @@
             class="nav-link" href="{{route('logout')}}">Logout</a>
           </li>
   
-          <form id="form-logout" action="{{route('logout')}}" method="post">
+          <form id="form-logout" action="{{route('custom.logout')}}" method="post">
 
             @csrf
           </form>
@@ -63,7 +63,7 @@
 
         @else
           <li class="nav-item">
-            <a class="nav-link" href="/login">Login</a>
+            <a class="nav-link" href="{{route('custom.login')}}">Login</a>
           </li>
       
        

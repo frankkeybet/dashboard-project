@@ -40,24 +40,5 @@ class LoginController extends Controller
         $this->middleware('auth')->only('logout');
     }
 
-    public function login(Request $request){
 
-        // $user = User::find(52);
-        // Auth::login($user, true);
-        if(Auth::attempt(['email'=> $request->email, 'password' => $request->password],$request->remember)) {
-            // Authentication passed...
-            return redirect()->route('admin.index');
-        }
-        return redirect()->route('login');
-
-    }
-
-    public function logout()
-    {
-        auth()->logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-
-        return redirect('/login');
-    }
 }
