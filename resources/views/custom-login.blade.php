@@ -9,19 +9,29 @@
                                         <form method="POST" action="{{ route('custom.login.post') }}">
                                             @csrf
                                             <div class="form-floating mb-3">
-                                                <input name="email" class="form-control" id="inputEmail" type="email" placeholder="name@example.com" />
+                                                <input aria-describedby="inputEmailFeedback" name="email" class="form-control @error('email') is-invalid @enderror" id="inputEmail" type="email" placeholder="name@example.com" />
                                                 <label for="inputEmail">Email address</label>
+                                                 @error('email')
+                                                <div id="inputEmailFeedback" class="invalid-fedback">
+                                                    {{$message}}
+                                                </div>
+                                                @enderror
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input name="password" class="form-control" id="inputPassword" type="password" placeholder="Password" />
+                                                <input aria-describedby="inputPasswordFeedback" name="password" class="form-control @error('password') is-invalid @enderror" id="inputPassword" type="password" placeholder="Password" />
                                                 <label for="inputPassword">Password</label>
+                                                @error('password') 
+                                                <div id="inputPasswordFeedback" class="invalid-fedback">
+                                                    {{$message}}
+                                                </div>
+                                                @enderror
                                             </div>
                                             <div class="form-check mb-3">
-                                                <input name="remember" class="form-check-input" id="inputRememberPassword" type="checkbox" value="" />
+                                                <input name="remember" class="form-check-input " id="inputRememberPassword" type="checkbox" />
                                                 <label class="form-check-label" for="inputRememberPassword">Remember Password</label>
                                             </div>
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <a class="small" href="password.html">Forgot Password?</a>
+                                                <a class="small" href="{{route('custom.link.request')}}">Forgot Password?</a>
                                                 <button type="submit" class="btn btn-primary" >Login</a>
                                             </div>
                                         </form>
