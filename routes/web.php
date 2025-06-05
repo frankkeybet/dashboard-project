@@ -5,6 +5,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CustomLoginController;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\View;
 
 
 /*
@@ -53,6 +54,7 @@ Route::controller(CustomLoginController::class)->group(function(){
     Route::post('/custom-login', 'customLogin')->name('custom.login.post');
     Route::get('/custom-show-link-form', 'customShowLinkForm')->name('custom.link.request');
     Route::post('/custom-reset', 'customReset')->name('custom.reset');
+    Route::get('/custom-password/reset/{token}', 'customShowResetForm')->name('custom.show.reset');
     
 });
 

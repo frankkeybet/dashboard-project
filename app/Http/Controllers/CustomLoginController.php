@@ -17,10 +17,17 @@ class CustomLoginController extends Controller
         return view('custom-login');
     }
 
+
     public function customShowLinkForm()
     {
         return view('custom-show-link-form');
     }
+    public function customShowResetForm($token)
+    {
+        return view('custom-password-reset');
+    }
+
+
     public function customReset(Request $request)
     {
         $request->validate([
