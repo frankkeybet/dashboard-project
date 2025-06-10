@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Password;
+use Illuminate\Auth\Events\PasswordReset;
+use Illuminate\Foundation\Auth\ResetsPasswords;
 
 class CustomLoginController extends Controller
 {
@@ -22,9 +24,32 @@ class CustomLoginController extends Controller
     {
         return view('custom-show-link-form');
     }
-    public function customShowResetForm($token)
+    public function customShowResetForm(Request $request, $token)
     {
-        return view('custom-password-reset');
+
+       $email = $request->query('email');
+        return view('custom-password-reset', ['token' => $token, 'email' => $email]);
+    }
+
+    public function customPasswordUpdate(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|confirmed',
+            'password_confirmation' => 'required',
+            'token' => 'required',
+        ]);
+
+       Password::reset($request->only('email', 'password', 'password_confirmation', 'token'), function (User $user, $password) {
+            $user->forceFill([
+                'password' => bcrypt($password),
+            ])->setRememberToken(Str::random(40));
+
+            $user->save();
+
+        });
+
+        return redirect()->route('custom.login')->with('status', __('Your password has been reset!'));
     }
 
 
