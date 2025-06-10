@@ -5,6 +5,14 @@
 
  <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
+                                    
+                                     @if (session('status'))
+                                            <div class="alert alert-success">
+                                                {{ session('status') }}
+                                            </div>
+                                            @endif
+
+
                                     <div class="card-body">
                                         <form method="POST" action="{{ route('custom.login.post') }}">
                                             @csrf

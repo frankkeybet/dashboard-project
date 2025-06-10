@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use Illuminate\Support\Str;
 
 class CustomLoginController extends Controller
 {
@@ -40,7 +41,7 @@ class CustomLoginController extends Controller
             'token' => 'required',
         ]);
 
-       Password::reset($request->only('email', 'password', 'password_confirmation', 'token'), function (User $user, $password) {
+      $status =  Password::reset($request->only('email', 'password', 'password_confirmation', 'token'), function (User $user, $password) {
             $user->forceFill([
                 'password' => bcrypt($password),
             ])->setRememberToken(Str::random(40));
@@ -49,7 +50,12 @@ class CustomLoginController extends Controller
 
         });
 
-        return redirect()->route('custom.login')->with('status', __('Your password has been reset!'));
+        if($status === Password::PASSWORD_RESET) {
+            // event(new PasswordReset($user));
+            return redirect()->route('custom.login')->with('status', __($status));
+        } else {
+            return back()->withErrors(['email' => __($status)]);
+        }
     }
 
 
