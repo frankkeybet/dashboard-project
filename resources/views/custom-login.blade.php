@@ -20,7 +20,7 @@
                                                 <input aria-describedby="inputEmailFeedback" name="email" class="form-control @error('email') is-invalid @enderror" id="inputEmail" type="email" placeholder="name@example.com" />
                                                 <label for="inputEmail">Email address</label>
                                                  @error('email')
-                                                <div id="inputEmailFeedback" class="invalid-fedback">
+                                                <div id="inputEmailFeedback" class="invalid-feedback">
                                                     {{$message}}
                                                 </div>
                                                 @enderror
@@ -29,7 +29,7 @@
                                                 <input aria-describedby="inputPasswordFeedback" name="password" class="form-control @error('password') is-invalid @enderror" id="inputPassword" type="password" placeholder="Password" />
                                                 <label for="inputPassword">Password</label>
                                                 @error('password') 
-                                                <div id="inputPasswordFeedback" class="invalid-fedback">
+                                                <div id="inputPasswordFeedback" class="invalid-feedback">
                                                     {{$message}}
                                                 </div>
                                                 @enderror
@@ -45,7 +45,7 @@
                                         </form>
                                     </div>
                                     <div class="card-footer text-center py-3">
-                                        <div class="small"><a href="register.html">Need an account? Sign up!</a></div>
+                                        <div class="small"><a href="{{route('custom.register')}}">Need an account? Sign up!</a></div>
                                     </div>
                                 </div>
 

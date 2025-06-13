@@ -15,6 +15,9 @@ use Illuminate\Support\Str;
 
 class CustomLoginController extends Controller
 {
+
+
+
     public function customShowLoginForm()
     {
         return view('custom-login');
@@ -91,6 +94,7 @@ class CustomLoginController extends Controller
         return redirect()->route('custom.login');
 
     }
+
 
      public function customLogout(Request $request)
     {

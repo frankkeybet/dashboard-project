@@ -6,6 +6,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CustomLoginController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
+use App\Http\Controllers\CustomRegistrationController;
+
 
 
 /*
@@ -49,6 +51,7 @@ Route::controller(HomeController::class)->group(function(){
 
 Route::controller(CustomLoginController::class)->group(function(){
 
+  
     Route::get('/custom-login', 'customShowLoginForm')->name('custom.login');
     Route::post('/custom-logout', 'customLogout')->name('custom.logout');
     Route::post('/custom-login', 'customLogin')->name('custom.login.post');
@@ -56,7 +59,14 @@ Route::controller(CustomLoginController::class)->group(function(){
     Route::post('/custom-reset', 'customReset')->name('custom.reset');
     Route::get('/custom-password/reset/{token}', 'customShowResetForm')->name('custom.show.reset');
     Route::post('/custom-password/reset', 'customPasswordUpdate')->name('custom.update');
+   
     
 });
 
+Route::controller(CustomRegistrationController::class)->group(function(){
+
+    Route::view('/custom-register', 'custom-register')->name('custom.show.register');
+    Route::post('/custom-register', 'customRegister')->name('custom.register');
+
+});
 

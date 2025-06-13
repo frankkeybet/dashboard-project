@@ -21,9 +21,12 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'firstname',
+        'lastname',
         'email',
         'password',
+        'password_confirmation',
+
     ];
 
     /**
@@ -50,5 +53,18 @@ class User extends Authenticatable
     {
         return $this->hasMany(Post::class);
     }
-    
+
+    protected $appends = ['name'];
+
+    public function getNameAttribute()
+    {
+        return $this->firstname . ' ' . $this->lastname;
+    }
+
+    public function setNameAttribute($value)
+    {
+        $this->attributes['firstname'] = $value['firstname'];
+        $this->attributes['lastname'] = $value['lastname'];
+    }
+
 }
