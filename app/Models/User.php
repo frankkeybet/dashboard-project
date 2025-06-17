@@ -10,6 +10,8 @@ use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use App\Models\Post;
 use App\Models\Comment;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Support\Str;
 
 class User extends Authenticatable
 {
@@ -54,17 +56,32 @@ class User extends Authenticatable
         return $this->hasMany(Post::class);
     }
 
-    protected $appends = ['name'];
-
-    public function getNameAttribute()
-    {
-        return $this->firstname . ' ' . $this->lastname;
+    protected $appends = ['name','username'];
+ 
+    protected function name(): Attribute{
+        return new Attribute(
+            get: fn () => $this->firstname . ' ' . $this->lastname,
+        
+        );
     }
 
-    public function setNameAttribute($value)
-    {
-        $this->attributes['firstname'] = $value['firstname'];
-        $this->attributes['lastname'] = $value['lastname'];
+    protected function username(): Attribute{
+        return new Attribute(
+            get: fn () => Str::lower($this->firstname ). '@' . 
+                          Str::lower($this->lastname) . '_' .
+                          $this->id,
+        );
     }
+
+    // public function getNameAttribute()
+    // {
+    //     return $this->firstname . ' ' . $this->lastname;
+    // }
+
+    // public function setNameAttribute($value)
+    // {
+    //     $this->attributes['firstname'] = $value['firstname'];
+    //     $this->attributes['lastname'] = $value['lastname'];
+    // }
 
 }

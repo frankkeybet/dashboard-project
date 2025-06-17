@@ -13,8 +13,14 @@ use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 use Illuminate\Support\Str;
 
+
 class CustomLoginController extends Controller
 {
+
+
+    public function __construct(){
+        $this->middleware('auth');
+    }
 
 
 

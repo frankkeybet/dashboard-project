@@ -11,6 +11,12 @@ use App\Models\User;
 
 class CustomRegistrationController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('guest');
+    }
+    
     
     public function customRegister(Request $request)
     {
@@ -29,6 +35,6 @@ class CustomRegistrationController extends Controller
         Auth::login($user);
        
 
-        return redirect()->route('admin.index');
+        return redirect()->route('admin.posts.index');
     }
 }

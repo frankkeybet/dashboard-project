@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Clean Blog - Start Bootstrap Theme</title>
+  <title>Frank's Blog - Start Bootstrap Theme</title>
 
   <!-- Bootstrap core CSS -->
   <!-- <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
@@ -90,9 +90,9 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="site-heading">
-            <h1>Clean Blog</h1>
+            <h1>Frank's Blog</h1>
 
-            <span class="subheading">A Blog Theme by Click click Bang</span>
+            <span class="subheading">Complete Laravel Bootcamp by Frank<>Edwin Diaz</span>
           </div>
         </div>
       </div>

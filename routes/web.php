@@ -52,7 +52,7 @@ Route::controller(HomeController::class)->group(function(){
 Route::controller(CustomLoginController::class)->group(function(){
 
   
-    Route::get('/custom-login', 'customShowLoginForm')->name('custom.login');
+    Route::get('/custom-login', 'customShowLoginForm')->name('custom.login')->middleware('guest');
     Route::post('/custom-logout', 'customLogout')->name('custom.logout');
     Route::post('/custom-login', 'customLogin')->name('custom.login.post');
     Route::get('/custom-show-link-form', 'customShowLinkForm')->name('custom.link.request');
@@ -65,7 +65,7 @@ Route::controller(CustomLoginController::class)->group(function(){
 
 Route::controller(CustomRegistrationController::class)->group(function(){
 
-    Route::view('/custom-register', 'custom-register')->name('custom.show.register');
+    Route::view('/custom-register', 'custom-register')->name('custom.show.register')->middleware('guest');
     Route::post('/custom-register', 'customRegister')->name('custom.register');
 
 });

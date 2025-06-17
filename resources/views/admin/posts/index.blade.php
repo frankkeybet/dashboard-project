@@ -21,7 +21,7 @@
                                     <thead>
                                         <tr>
                                             <th>Id</th>
-                                            <th>User Name</th>
+                                            <th>Username</th>
                                             <th>Title</th>
                                             <th>Comments</th>
                                             <th>Created date</th>
@@ -31,7 +31,7 @@
                                     <tfoot>
                                         <tr>
                                             <th>Id</th>
-                                            <th>User Name</th>
+                                            <th>Username</th>
                                             <th>Title</th>
                                             <th>Comments</th>
                                             <th>Created date</th>
@@ -42,7 +42,7 @@
                                     @foreach($posts as $post)  
                                     <tr>
                                         <td>{{ $post->id }}</td>
-                                        <td>{{ $post->user->name }}</td>
+                                        <td>{{ $post->user->username }}</td>
                                         <td>{{ $post->title }}</td>
                                         <td>{{ $post->comments[0]->id }}</td>
                                         <td>{{ $post->created_at->diffForHumans() }}</td>
